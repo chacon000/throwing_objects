@@ -1,28 +1,3 @@
-function raindrop () {
-    spiny = sprites.createProjectileFromSprite(img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . 1 . . . . . . . . 
-. . . . . . . 1 . . . . . . . . 
-. . . . . . 4 4 1 . . . . . . . 
-. 1 . . . . 4 4 1 . . . . 1 . . 
-. 4 1 . . 4 4 4 4 1 . . 4 1 . . 
-. 4 4 1 . 4 4 4 4 1 . 4 4 1 . . 
-. 4 4 4 1 2 4 4 4 2 4 4 4 1 . . 
-. 4 4 4 1 2 2 2 2 2 4 4 1 1 . . 
-. 2 4 2 2 2 4 1 1 2 2 4 4 2 2 . 
-. 2 2 2 2 4 4 4 1 1 2 2 2 1 1 1 
-2 2 2 2 2 4 4 4 4 4 2 2 1 2 2 . 
-1 1 1 2 2 2 4 4 2 2 2 1 2 2 1 2 
-. . 1 1 1 2 2 2 2 2 1 4 2 2 2 2 
-. 4 4 4 1 1 1 1 1 1 4 4 4 . . . 
-4 4 4 4 . . . . . . 4 4 4 4 . . 
-`, cloud2, 50, 100)
-    spiny.y += 3
-    spiny.x += Math.randomRange(0, 10)
-}
-function score () {
-    info.changeScoreBy(1)
-}
 function hero () {
     mario = sprites.create(img`
 . . . 2 2 2 2 2 2 . . . . . . . 
@@ -63,10 +38,10 @@ f 1 1 1 1 f 1 1 1 1 f 1 1 9 9 f
 . f 9 1 1 1 1 9 9 1 1 1 9 9 f . 
 . . f 9 9 9 9 f f 9 9 9 9 f . . 
 . . . f f f f . . f f f f . . . 
-`, 50, 0)
+`, 50, 5)
 }
-function ball () {
-	
+function score () {
+    info.changeScoreBy(1)
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile = sprites.createProjectileFromSprite(img`
@@ -88,10 +63,35 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . . . . . . . . . . . . . 
 `, mario, 0, -50)
 })
-let projectile: Sprite = null
-let mario: Sprite = null
-let cloud2: Sprite = null
+function raindrop () {
+    spiny = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . 1 . . . . . . . . 
+. . . . . . . 1 . . . . . . . . 
+. . . . . . 4 4 1 . . . . . . . 
+. 1 . . . . 4 4 1 . . . . 1 . . 
+. 4 1 . . 4 4 4 4 1 . . 4 1 . . 
+. 4 4 1 . 4 4 4 4 1 . 4 4 1 . . 
+. 4 4 4 1 2 4 4 4 2 4 4 4 1 . . 
+. 4 4 4 1 2 2 2 2 2 4 4 1 1 . . 
+. 2 4 2 2 2 4 1 1 2 2 4 4 2 2 . 
+. 2 2 2 2 4 4 4 1 1 2 2 2 1 1 1 
+2 2 2 2 2 4 4 4 4 4 2 2 1 2 2 . 
+1 1 1 2 2 2 4 4 2 2 2 1 2 2 1 2 
+. . 1 1 1 2 2 2 2 2 1 4 2 2 2 2 
+. 4 4 4 1 1 1 1 1 1 4 4 4 . . . 
+4 4 4 4 . . . . . . 4 4 4 4 . . 
+`, cloud2, 50, 100)
+    spiny.y += 3
+    spiny.x += Math.randomRange(0, 10)
+}
+function ball () {
+	
+}
 let spiny: Sprite = null
+let projectile: Sprite = null
+let cloud2: Sprite = null
+let mario: Sprite = null
 hero()
 game.onUpdateInterval(1000, function () {
     cloud()
